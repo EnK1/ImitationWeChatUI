@@ -57,9 +57,9 @@ public class PagerFragment extends Fragment {
         Bundle bundle = getArguments();
         this.flag = bundle.getInt("FLAG");
 
-        Collections.addAll(names,"朵库萝","赫萝","高町奈叶","泉此方","奈落","基拉");
+        Collections.addAll(names,"朵库萝","赫萝","高町奈叶","泉此方","奈落","基拉","1","2","3","4","5","6");
 
-        for (int i = 0; i<5;i++){
+        for (int i = 0; i<10;i++){
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -107,9 +107,16 @@ public class PagerFragment extends Fragment {
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
+
                 }
             }).start();
         }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
 
 
 
@@ -138,9 +145,6 @@ public class PagerFragment extends Fragment {
     }
 
     private void initFlag1(View view){
-        for(int i = 0;i<msgs.size();i++ ){
-            Log.e("test1", "initFlag1: "+msgs.get(i) );
-        }
         ListView listView = view.findViewById(R.id.chat_list);
         listView.setAdapter(adapter);
     }
