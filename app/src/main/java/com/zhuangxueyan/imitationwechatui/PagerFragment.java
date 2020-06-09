@@ -54,7 +54,7 @@ public class PagerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
         this.flag = bundle.getInt("FLAG");
 
         Collections.addAll(names,"朵库萝","赫萝","高町奈叶","泉此方","奈落","基拉","1","2","3","4","5","6");
