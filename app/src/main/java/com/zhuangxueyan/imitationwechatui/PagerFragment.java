@@ -71,11 +71,17 @@ public class PagerFragment extends Fragment {
                         Response response = client.newCall(request).execute();
                         String msg = null;
                         msg = response.body().string();
-                        Log.e("test", "run: " + msg );
+//                        Log.e("test", "run: " + msg );
                         msgs.add(msg);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
 
                 }
             }).start();
@@ -91,7 +97,7 @@ public class PagerFragment extends Fragment {
                         String imgJson = response.body().string();
                         JSONObject jsonObject = new JSONObject(imgJson);
                         String Rurl = jsonObject.getString("imgurl");
-                        Log.e("test", "img: "+Rurl);
+//                        Log.e("test", "img: "+Rurl);
 
                         Bitmap bitmap = null;
                         URL url1 = new URL(Rurl);
@@ -108,15 +114,24 @@ public class PagerFragment extends Fragment {
                         e.printStackTrace();
                     }
 
+
                 }
+
             }).start();
         }
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
+
+
 
 
 
